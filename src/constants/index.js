@@ -13,3 +13,7 @@ export const CLOUDINARY = {
 };
 
 // export const SWAGGER_PATH = path.join(process.cwd(), 'docs', 'swagger.json');
+
+export const PER_PAGE_LIMIT = 100;
+export const DEFAULT_PAGE = 1;
+export const DEFAULT_PER_PAGE = 10;
