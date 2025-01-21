@@ -5,13 +5,16 @@ import {
   updateFlat,
   deleteFlat,
 } from "../services/flat.js";
+import { parseFlatFilters } from "../utils/parseFilters.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
 import { saveFileToCloudinary } from "../utils/saveFileToCloudinary.js";
 
 export const getFlatsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
+  const filters = parseFlatFilters(req.query);
 
-  const flats = await getFlats(page, perPage);
+
+  const flats = await getFlats(page, perPage, filters);
 
   res.status(200).json({
     status: 200,

@@ -1,4 +1,5 @@
 import { model, Schema } from "mongoose";
+import { ROOMS_COUNTS } from "../../constants/index.js";
 
 const flatSchema = new Schema(
   {
@@ -20,7 +21,7 @@ const flatSchema = new Schema(
     roomsCount: {
       type: Number,
       required: true,
-      enum: [1, 2, 3],
+      enum: ROOMS_COUNTS,
     },
     photo: {
       type: String,

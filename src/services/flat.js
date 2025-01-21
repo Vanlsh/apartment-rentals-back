@@ -7,11 +7,17 @@ export const getFlats = async (
   perPage = DEFAULT_PER_PAGE,
   filters = {}
 ) => {
-  const { price, roomsCount } = filters;
+  const { priceMin, priceMax, roomsCount } = filters;
 
   const query = {};
-  if (price) {
-    query.price = { $lte: price };
+  if (priceMin !== undefined || priceMax !== undefined) {
+    query.price = {};
+    if (priceMin !== undefined) {
+      query.price.$gte = priceMin;
+    }
+    if (priceMax !== undefined) {
+      query.price.$lte = priceMax;
+    }
   }
   if (roomsCount) {
     query.roomsCount = roomsCount;

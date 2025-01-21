@@ -1,4 +1,5 @@
 import Joi from "joi";
+import { ROOMS_COUNTS } from "../constants/index.js";
 
 export const flatSchema = Joi.object({
   title: Joi.string()
@@ -32,7 +33,7 @@ export const flatSchema = Joi.object({
       "any.required": "Price is required.",
     }),
   roomsCount: Joi.number()
-    .valid(1, 2, 3)
+    .valid(...ROOMS_COUNTS)
     .when("$isUpdate", {
       is: false,
       then: Joi.required(),

@@ -21,3 +21,5 @@ export const DEFAULT_PAGE = 1;
 export const DEFAULT_PER_PAGE = 10;
 
 export const TEMP_UPLOAD_DIR = path.join(process.cwd(), "temp");
+
+export const ROOMS_COUNTS = [1, 2, 3];
