@@ -1,4 +1,10 @@
-import { getFlats, getFlat, createFlat, updateFlat } from "../services/flat.js";
+import {
+  getFlats,
+  getFlat,
+  createFlat,
+  updateFlat,
+  deleteFlat,
+} from "../services/flat.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
 
 export const getFlatsController = async (req, res) => {
@@ -67,4 +73,17 @@ export const patchFlatController = async (req, res, next) => {
     message: "Successfully patched a flat!",
     data: result.flat,
   });
+};
+
+export const deleteFlatController = async (req, res, next) => {
+  const { flatId } = req.params;
+
+  const result = await deleteFlat(flatId);
+
+  if (!result) {
+    next(createHttpError(404, "Flat not found"));
+    return;
+  }
+
+  res.status(204).send();
 };

@@ -5,6 +5,7 @@ import {
   getFlatController,
   createFlatController,
   patchFlatController,
+  deleteFlatController,
 } from "../controllers/flat.js";
 import { flatSchema } from "../validation/flatSchema.js";
 import { validateBody } from "../middlewares/validateBody.js";
@@ -25,8 +26,14 @@ router.post("/", validateBody(flatSchema), ctrlWrapper(createFlatController));
 router.patch(
   "/:flatId",
   //   upload.single("photo"),
+  validateMongoId("flatId"),
   validateBody(flatSchema, true),
   ctrlWrapper(patchFlatController)
 );
 
+router.delete(
+  "/:flatId",
+  validateMongoId("flatId"),
+  ctrlWrapper(deleteFlatController)
+);
 export default router;

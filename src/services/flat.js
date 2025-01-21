@@ -56,3 +56,9 @@ export const updateFlat = async (flatId, payload, options = {}) => {
     isNew: Boolean(flat?.lastErrorObject?.upserted),
   };
 };
+
+export const deleteFlat = async (flatId) => {
+  return FlatCollection.findOneAndDelete({
+    _id: flatId,
+  });
+};
