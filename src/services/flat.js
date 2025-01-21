@@ -32,6 +32,27 @@ export const getFlats = async (
   };
 };
 
+export const getFlat = async (flatId) => {
+  return await FlatCollection.findOne({
+    _id: flatId,
+  });
+};
+
 export const createFlat = async (payload) => {
   return FlatCollection.create(payload);
+};
+
+export const updateFlat = async (flatId, payload, options = {}) => {
+  const flat = await FlatCollection.findOneAndUpdate({ _id: flatId }, payload, {
+    new: true,
+    includeResultMetadata: true,
+    ...options,
+  });
+
+  if (!flat || !flat.value) return null;
+
+  return {
+    flat: flat.value,
+    isNew: Boolean(flat?.lastErrorObject?.upserted),
+  };
 };
