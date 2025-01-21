@@ -11,6 +11,7 @@ import { flatSchema } from "../validation/flatSchema.js";
 import { validateBody } from "../middlewares/validateBody.js";
 import { validateMongoId } from "../middlewares/validateMongoId.js";
 import { upload } from "../middlewares/multer.js";
+import { deleteFileHandler } from "../utils/deleteFileHandler.js";
 
 const router = Router();
 
@@ -26,7 +27,8 @@ router.post(
   "/",
   upload.single("photo"),
   validateBody(flatSchema),
-  ctrlWrapper(createFlatController)
+  ctrlWrapper(createFlatController),
+  deleteFileHandler
 );
 
 router.patch(
@@ -34,7 +36,8 @@ router.patch(
   validateMongoId("flatId"),
   upload.single("photo"),
   validateBody(flatSchema, true),
-  ctrlWrapper(patchFlatController)
+  ctrlWrapper(patchFlatController),
+  deleteFileHandler
 );
 
 router.delete(
