@@ -6,6 +6,7 @@ import {
   deleteFlat,
 } from "../services/flat.js";
 import { parsePaginationParams } from "../utils/parsePaginationParams.js";
+import { saveFileToCloudinary } from "../utils/saveFileToCloudinary.js";
 
 export const getFlatsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
@@ -37,13 +38,14 @@ export const getFlatController = async (req, res) => {
 };
 
 export const createFlatController = async (req, res) => {
-  // const photo = req.file;
+  const photo = req.file;
+  const data = { ...req.body };
 
-  // if (photo) {
-  //   data.photo = await saveFileToCloudinary(photo);
-  // }
+  if (photo) {
+    data.photo = await saveFileToCloudinary(photo);
+  }
 
-  const flat = await createFlat(req.body);
+  const flat = await createFlat(data);
 
   res.status(201).json({
     status: 201,
@@ -54,12 +56,12 @@ export const createFlatController = async (req, res) => {
 
 export const patchFlatController = async (req, res, next) => {
   const { flatId } = req.params;
-  // const photo = req.file;
+  const photo = req.file;
   const data = { ...req.body };
 
-  // if (photo) {
-  //   data.photo = await saveFileToCloudinary(photo);
-  // }
+  if (photo) {
+    data.photo = await saveFileToCloudinary(photo);
+  }
 
   const result = await updateFlat(flatId, data);
 

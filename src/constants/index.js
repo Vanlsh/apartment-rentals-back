@@ -1,3 +1,5 @@
+import path from "path";
+
 export const ENV_VARS = {
   PORT: "PORT",
   MONGODB_USER: "MONGODB_USER",
@@ -17,3 +19,5 @@ export const CLOUDINARY = {
 export const PER_PAGE_LIMIT = 100;
 export const DEFAULT_PAGE = 1;
 export const DEFAULT_PER_PAGE = 10;
+
+export const TEMP_UPLOAD_DIR = path.join(process.cwd(), "temp");
