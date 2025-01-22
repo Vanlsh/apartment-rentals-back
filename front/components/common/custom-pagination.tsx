@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button';
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-} from "@/components/ui/pagination";
-import { DOTS, usePagination } from "@/hooks/use-pagination";
-import { useQueryParameters } from "@/hooks/use-query-parameters";
-import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useEffect } from "react";
+} from '@/components/ui/pagination';
+import { DOTS, usePagination } from '@/hooks/use-pagination';
+import { useQueryParameters } from '@/hooks/use-query-parameters';
+import { cn } from '@/lib/utils';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useEffect } from 'react';
 
 const CustomPagination = ({
   siblingCount = 1,
@@ -75,15 +75,15 @@ const CustomPagination = ({
               <Button
                 variant="ghost"
                 disabled={
-                  typeof pageNumber === "number" && pageNumber === currentPage
+                  typeof pageNumber === 'number' && pageNumber === currentPage
                 }
-                className={cn("disabled:opacity-100", {
-                  "border border-primary":
-                    typeof pageNumber === "number" &&
+                className={cn('disabled:opacity-100', {
+                  'border border-primary':
+                    typeof pageNumber === 'number' &&
                     pageNumber === currentPage,
                 })}
                 onClick={() =>
-                  typeof pageNumber === "number" &&
+                  typeof pageNumber === 'number' &&
                   updateQueryParameters({
                     page: pageNumber,
                   })

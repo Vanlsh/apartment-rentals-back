@@ -14,5 +14,5 @@ export interface Pagination {
 }
 
 export enum Tags {
-  Flats = "flats",
+  Flats = 'flats',
 }

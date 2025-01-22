@@ -1,5 +1,5 @@
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
+import { useSearchParams, usePathname, useRouter } from 'next/navigation';
+import { useCallback } from 'react';
 
 export const useQueryParameters = () => {
   const router = useRouter();
@@ -29,19 +29,19 @@ export const useQueryParameters = () => {
 
       return newSearchParameters.toString();
     },
-    [searchParameters]
+    [searchParameters],
   );
 
   const updateQueryParameters = useCallback(
     (
       parameters: Record<string, string | number | boolean | null>,
-      removeKeys: string[] = []
+      removeKeys: string[] = [],
     ) => {
       const newSearchParameters = new URLSearchParams(
-        searchParameters.toString()
+        searchParameters.toString(),
       );
 
-      removeKeys.forEach((key) => newSearchParameters.delete(key));
+      removeKeys.forEach(key => newSearchParameters.delete(key));
 
       for (const [key, value] of Object.entries(parameters)) {
         if (value === null) {
@@ -53,14 +53,14 @@ export const useQueryParameters = () => {
 
       router.replace(`${pathname}?${newSearchParameters.toString()}`);
     },
-    [router, pathname, searchParameters]
+    [router, pathname, searchParameters],
   );
 
   const getQueryParameter = useCallback(
     (parameter: string) => {
       return searchParameters.get(parameter);
     },
-    [searchParameters]
+    [searchParameters],
   );
 
   return {

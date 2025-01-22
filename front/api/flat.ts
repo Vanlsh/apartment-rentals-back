@@ -1,7 +1,7 @@
-import { api } from "@/lib/api";
-import { sendRequest } from "@/lib/fetch-data";
-import { ApiResponse, Pagination, Tags } from "@/types";
-import { Flat } from "@/types/flat";
+import { api } from '@/lib/api';
+import { sendRequest } from '@/lib/fetch-data';
+import { ApiResponse, Pagination, Tags } from '@/types';
+import { Flat } from '@/types/flat';
 
 interface FlatsData extends Pagination {
   data: Flat[];
@@ -13,9 +13,9 @@ export const getFlats = async (filters: {
   priceMin?: number;
   priceMax?: number;
 }) => {
-  return await sendRequest<ApiResponse<FlatsData>>("/api/flat", {
+  return await sendRequest<ApiResponse<FlatsData>>('/api/flat', {
     query: filters,
-    init: { next: { tags: ["flats"] } },
+    init: { next: { tags: ['flats'] } },
   });
 };
 
@@ -26,9 +26,9 @@ export const getFlat = async (flatId: string) => {
 };
 
 export const addFlat = <T>(values: T) => {
-  return api.post("/api/flat", values, {
+  return api.post('/api/flat', values, {
     headers: {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'multipart/form-data',
     },
   });
 };
@@ -36,7 +36,7 @@ export const addFlat = <T>(values: T) => {
 export const updateFlat = <T>(id: string, values: T) => {
   return api.patch(`/api/flat/${id}`, values, {
     headers: {
-      "Content-Type": "multipart/form-data",
+      'Content-Type': 'multipart/form-data',
     },
   });
 };

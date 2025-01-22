@@ -1,21 +1,21 @@
-import { FlatFilters } from "@/types/flat";
-import { z } from "zod";
+import { FlatFilters } from '@/types/flat';
+import { z } from 'zod';
 
 const pageSchema = z
   .string()
-  .regex(/^\d+$/, "Page must be a positive number")
-  .transform((val) => parseInt(val, 10));
+  .regex(/^\d+$/, 'Page must be a positive number')
+  .transform(val => parseInt(val, 10));
 
 const roomsCountSchema = z
   .string()
-  .regex(/^[1-3]$/, "Rooms count must be 1, 2, or 3")
-  .transform((val) => parseInt(val, 10))
+  .regex(/^[1-3]$/, 'Rooms count must be 1, 2, or 3')
+  .transform(val => parseInt(val, 10))
   .optional();
 
 const priceSchema = z
   .string()
-  .regex(/^\d+(\.\d+)?$/, "Price must be a valid number")
-  .transform((val) => parseFloat(val))
+  .regex(/^\d+(\.\d+)?$/, 'Price must be a valid number')
+  .transform(val => parseFloat(val))
   .optional();
 
 export interface FlatParsedFilters {

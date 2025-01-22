@@ -4,9 +4,9 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
-import { Dispatch, SetStateAction } from "react";
+} from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface IModalProps {
   isOpen: boolean;
@@ -35,7 +35,7 @@ const Modal = ({
         <DialogHeader className={headerClassName}>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription
-            className={cn("text-balance", { ["sr-only"]: isDescriptionSrOnly })}
+            className={cn('text-balance', { ['sr-only']: isDescriptionSrOnly })}
           >
             {description}
           </DialogDescription>

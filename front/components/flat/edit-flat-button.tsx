@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useModal } from "@/hooks/use-modal";
-import { Button } from "../ui/button";
-import { Flat } from "@/types/flat";
-import EditFlatModal from "../modals/edit-flat-modal";
-import { Edit } from "lucide-react";
+import { useModal } from '@/hooks/use-modal';
+import { Button } from '../ui/button';
+import { Flat } from '@/types/flat';
+import EditFlatModal from '../modals/edit-flat-modal';
+import { Edit } from 'lucide-react';
 
 interface IEditFlatButtonProps {
   className?: string;

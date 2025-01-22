@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit';
 
-import { favoriteReducer, FavoriteState } from "./favorite/slice";
+import { favoriteReducer, FavoriteState } from './favorite/slice';
 import {
   persistStore,
   persistReducer,
@@ -10,22 +10,24 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
+} from 'redux-persist';
 
-import storage from "redux-persist/lib/storage";
+import storage from 'redux-persist/lib/storage';
 
 const favoritePersistConfig = {
-  key: "favorite",
+  key: 'favorite',
   storage,
 };
 
 export const store = configureStore({
   reducer: {
-    favorite:
-      persistReducer<FavoriteState>(favoritePersistConfig, favoriteReducer),
+    favorite: persistReducer<FavoriteState>(
+      favoritePersistConfig,
+      favoriteReducer,
+    ),
   },
 
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

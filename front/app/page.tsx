@@ -1,12 +1,12 @@
-import { getFlats } from "@/api/flat";
-import CustomPagination from "@/components/common/custom-pagination";
-import FlatList from "@/components/flat/flat-list";
-import HomeHeader from "@/components/home/home-header";
-import { parseFilters } from "@/lib/parseFilter";
-import { FlatFilters } from "@/types/flat";
+import { getFlats } from '@/api/flat';
+import CustomPagination from '@/components/common/custom-pagination';
+import FlatList from '@/components/flat/flat-list';
+import HomeHeader from '@/components/home/home-header';
+import { parseFilters } from '@/lib/parseFilter';
+import { FlatFilters } from '@/types/flat';
 
 interface HomeProps {
-  searchParams: FlatFilters;
+  searchParams: Promise<FlatFilters>;
 }
 const Home = async (props: HomeProps) => {
   const searchParams = await props.searchParams;

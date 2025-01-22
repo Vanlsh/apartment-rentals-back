@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useModal } from "@/hooks/use-modal";
-import { Button } from "../ui/button";
-import AddFlatModal from "../modals/add-flat-modal";
+import { useModal } from '@/hooks/use-modal';
+import { Button } from '../ui/button';
+import AddFlatModal from '../modals/add-flat-modal';
 
 interface IAddFlatButtonProps {
   className?: string;

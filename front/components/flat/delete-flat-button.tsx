@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { useModal } from "@/hooks/use-modal";
-import Modal from "../common/modal";
-import { useTransition } from "react";
-import { Button } from "../ui/button";
-import { Flat } from "@/types/flat";
-import LoadingButton from "../common/loading-button";
-import { deleteFlatAction } from "@/actions/flat";
-import { toast } from "@/hooks/use-toast";
-import { Trash2 } from "lucide-react";
-import { useParams, useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { removeFavorite } from "@/store/favorite/slice";
+import { useModal } from '@/hooks/use-modal';
+import Modal from '../common/modal';
+import { useTransition } from 'react';
+import { Button } from '../ui/button';
+import { Flat } from '@/types/flat';
+import LoadingButton from '../common/loading-button';
+import { deleteFlatAction } from '@/actions/flat';
+import { toast } from '@/hooks/use-toast';
+import { Trash2 } from 'lucide-react';
+import { useParams, useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { removeFavorite } from '@/store/favorite/slice';
 
 interface IDeleteFlatButtonProps {
   className?: string;
@@ -32,18 +32,18 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
 
         if (response.error) {
           toast({
-            variant: "destructive",
+            variant: 'destructive',
             description: response.error,
           });
           return;
         }
-        if (flatId) router.replace("/");
+        if (flatId) router.replace('/');
         dispatch(removeFavorite(flat._id));
         closeModal();
       } catch (error) {
         toast({
-          variant: "destructive",
-          description: "An error occurred!",
+          variant: 'destructive',
+          description: 'An error occurred!',
         });
       }
     });
@@ -60,7 +60,7 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
         description={`Are you sure you want to delete the apartment ${flat.title}`}
         isDescriptionSrOnly={false}
       >
-        <div className="flex gap-3 justify-end">
+        <div className="flex justify-end gap-3">
           <Button onClick={closeModal} variant="outline">
             Cancel
           </Button>

@@ -1,7 +1,7 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import AddFlatButton from "../flat/add-flat-button";
-import FlatFilters from "./flat-filters";
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
+import AddFlatButton from '../flat/add-flat-button';
+import FlatFilters from './flat-filters';
 
 interface IHomeHeaderProps {
   className?: string;
@@ -10,8 +10,8 @@ interface IHomeHeaderProps {
 
 const HomeHeader = ({ className, filters }: IHomeHeaderProps) => {
   return (
-    <Card className={cn("rounded-sm", className)}>
-      <CardHeader className="p-2 flex-row space-y-0">
+    <Card className={cn('rounded-sm', className)}>
+      <CardHeader className="flex-row space-y-0 p-2">
         <AddFlatButton />
         <FlatFilters className="ml-auto" filters={filters} />
       </CardHeader>

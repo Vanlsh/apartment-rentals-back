@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import { StaticImageData } from "next/image";
+import { cn } from '@/lib/utils';
+import { StaticImageData } from 'next/image';
 
 type PictureSource = {
   srcSet: string | StaticImageData;
@@ -15,26 +15,26 @@ type PictureProps = {
   className?: string;
   width?: number;
   height?: number;
-  loading?: "lazy" | "eager";
+  loading?: 'lazy' | 'eager';
 };
 
 const getMimeType = (url: string): string | undefined => {
-  const extension = url.split(".").pop()?.toLowerCase();
+  const extension = url.split('.').pop()?.toLowerCase();
   switch (extension) {
-    case "webp":
-      return "image/webp";
-    case "jpeg":
-    case "jpg":
-      return "image/jpeg";
-    case "png":
-      return "image/png";
+    case 'webp':
+      return 'image/webp';
+    case 'jpeg':
+    case 'jpg':
+      return 'image/jpeg';
+    case 'png':
+      return 'image/png';
     default:
       return undefined;
   }
 };
 
 const resolveSource = (source: string | StaticImageData): string =>
-  typeof source === "string" ? source : source.src;
+  typeof source === 'string' ? source : source.src;
 
 const Picture = ({
   sources,
@@ -44,7 +44,7 @@ const Picture = ({
   className,
   width,
   height,
-  loading = "eager",
+  loading = 'eager',
 }: PictureProps) => {
   return (
     <picture>

@@ -1,12 +1,12 @@
-import { getFlat } from "@/api/flat";
-import FlatDetails from "@/components/flat/flat-details";
-import { RequestError } from "@/lib/fetch-data";
-import { notFound } from "next/navigation";
+import { getFlat } from '@/api/flat';
+import FlatDetails from '@/components/flat/flat-details';
+import { RequestError } from '@/lib/fetch-data';
+import { notFound } from 'next/navigation';
 
 interface IFlatPageProps {
-  params: {
+  params: Promise<{
     flatId: string;
-  };
+  }>;
 }
 
 const getData = async (flatId: string) => {

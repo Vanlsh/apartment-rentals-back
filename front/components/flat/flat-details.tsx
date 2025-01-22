@@ -1,11 +1,11 @@
-import { Flat } from "@/types/flat";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import noImage from "@/public/no-image-v2.jpg";
-import { cn } from "@/lib/utils";
-import LikeButton from "./like-button";
-import DeleteFlatButton from "./delete-flat-button";
-import EditFlatButton from "./edit-flat-button";
-import Image from "next/image";
+import { Flat } from '@/types/flat';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import noImage from '@/public/no-image-v2.jpg';
+import { cn } from '@/lib/utils';
+import LikeButton from './like-button';
+import DeleteFlatButton from './delete-flat-button';
+import EditFlatButton from './edit-flat-button';
+import Image from 'next/image';
 
 interface IFlatDetailsProps {
   className?: string;
@@ -14,7 +14,7 @@ interface IFlatDetailsProps {
 
 const FlatDetails = ({ className, flat }: IFlatDetailsProps) => {
   return (
-    <Card className={cn("relative", className)}>
+    <Card className={cn('relative', className)}>
       <LikeButton flat={flat} />
       <CardHeader className="flex-row gap-4">
         <Image
@@ -24,8 +24,8 @@ const FlatDetails = ({ className, flat }: IFlatDetailsProps) => {
           height={500}
           alt={flat.title}
         />
-        <div className="flex-1 flex flex-col">
-          <div className="space-y-2 flex-grow">
+        <div className="flex flex-1 flex-col">
+          <div className="flex-grow space-y-2">
             <CardTitle>{flat.title}</CardTitle>
             <p className="text-muted-foreground">{flat.description}</p>
             <p>Count of rooms: {flat.roomsCount}</p>

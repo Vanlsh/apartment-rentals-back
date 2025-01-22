@@ -6,7 +6,7 @@ export class RequestError<E = unknown> extends Error {
   constructor(message: string, status: number, data: E) {
     super(message);
     this.status = status;
-    this.name = "RequestError";
+    this.name = 'RequestError';
     this.data = data;
   }
 }
@@ -19,8 +19,8 @@ export type FetchConfig = {
 };
 
 export const buildUrl = (paths: string, queryParameters?: Query): string => {
-  const normalizedBaseURL = baseURL?.replace(/\/+$/, "");
-  const normalizedPath = paths.replace(/^\/+/, "");
+  const normalizedBaseURL = baseURL?.replace(/\/+$/, '');
+  const normalizedPath = paths.replace(/^\/+/, '');
   const url = new URL(`${normalizedBaseURL}/${normalizedPath}`);
 
   if (queryParameters) {
@@ -34,11 +34,11 @@ export const buildUrl = (paths: string, queryParameters?: Query): string => {
 
 export const sendRequest = async <T>(
   url: string,
-  { query, init }: FetchConfig = {}
+  { query, init }: FetchConfig = {},
 ): Promise<T> => {
   init = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     ...init,
   };
@@ -49,7 +49,7 @@ export const sendRequest = async <T>(
   if (!response.ok) {
     const data = await response.json();
 
-    throw new RequestError("An error occurred", response.status, data);
+    throw new RequestError('An error occurred', response.status, data);
   }
 
   const data = await response.json();

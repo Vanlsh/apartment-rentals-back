@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { CloudUpload, X } from "lucide-react";
-import Dropzone from "react-dropzone";
-import Picture from "@/components/common/picture";
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { CloudUpload, X } from 'lucide-react';
+import Dropzone from 'react-dropzone';
+import Picture from '@/components/common/picture';
 
 export const DropzoneUploadedImage = ({
   src,
@@ -24,8 +24,8 @@ export const DropzoneUploadedImage = ({
   return (
     <div
       className={cn(
-        "relative flex h-64 justify-center overflow-hidden rounded-md border border-dashed border-primary",
-        wrapperClassName
+        'relative flex h-64 justify-center overflow-hidden rounded-md border border-dashed border-primary',
+        wrapperClassName,
       )}
     >
       <Picture
@@ -66,7 +66,7 @@ export const DropzoneContent = ({
       </p>
       {acceptedFormats && (
         <p className="text-xs">
-          Supported image formats: {acceptedFormats.join(", ")}
+          Supported image formats: {acceptedFormats.join(', ')}
         </p>
       )}
     </div>
@@ -89,14 +89,14 @@ const DropzoneInput = ({
   return (
     <Dropzone
       accept={accept}
-      onDrop={(acceptedFiles) => onChange(acceptedFiles[0])}
+      onDrop={acceptedFiles => onChange(acceptedFiles[0])}
     >
       {({ getRootProps, getInputProps }) => (
         <div
           {...getRootProps({
             className: cn(
-              "flex flex-col items-center hover:bg-primary/5 border-primary justify-center duration-300 border border-dashed w-full rounded-lg cursor-pointer",
-              className
+              'flex flex-col items-center hover:bg-primary/5 border-primary justify-center duration-300 border border-dashed w-full rounded-lg cursor-pointer',
+              className,
             ),
           })}
         >

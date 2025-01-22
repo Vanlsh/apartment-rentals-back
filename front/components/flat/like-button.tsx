@@ -1,11 +1,11 @@
-"use client";
-import { Heart } from "lucide-react";
-import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavorites } from "@/store/favorite/selectors";
-import { Flat } from "@/types/flat";
-import { addFavorite, removeFavorite } from "@/store/favorite/slice";
+'use client';
+import { Heart } from 'lucide-react';
+import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFavorites } from '@/store/favorite/selectors';
+import { Flat } from '@/types/flat';
+import { addFavorite, removeFavorite } from '@/store/favorite/slice';
 
 interface ILikeButtonProps {
   className?: string;
@@ -26,12 +26,12 @@ const LikeButton = ({ className, flat }: ILikeButtonProps) => {
   return (
     <Button
       variant="ghost"
-      className={cn("absolute top-2 right-2", className)}
+      className={cn('absolute right-2 top-2', className)}
       onClick={handleLike}
     >
       <Heart
-        fill={isLiked ? "#f44949" : ""}
-        className={cn({ "text-destructive": isLiked })}
+        fill={isLiked ? '#f44949' : ''}
+        className={cn({ 'text-destructive': isLiked })}
       />
     </Button>
   );

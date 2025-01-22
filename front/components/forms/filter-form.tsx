@@ -1,11 +1,11 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
 import {
   filterFiled,
   filterSchema,
   FilterSchema,
   getFilterValues,
-} from "./utils";
+} from './utils';
 import {
   Form,
   FormControl,
@@ -13,16 +13,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "../ui/form";
-import { Input } from "../ui/input";
+} from '../ui/form';
+import { Input } from '../ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from "../ui/select";
-import LoadingButton from "../common/loading-button";
+} from '../ui/select';
+import LoadingButton from '../common/loading-button';
 
 interface IFilterFormProps {
   onSubmit: (values: Partial<FilterSchema>) => void;
@@ -42,7 +42,7 @@ const FilterForm = ({ onSubmit, defaultValues }: IFilterFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-2">
-        {filterFiled.map((filter) => (
+        {filterFiled.map(filter => (
           <FormField
             key={filter.name}
             name={filter.name}
@@ -50,24 +50,24 @@ const FilterForm = ({ onSubmit, defaultValues }: IFilterFormProps) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>{filter.label}</FormLabel>
-                {filter.type === "input" && (
+                {filter.type === 'input' && (
                   <FormControl>
                     <Input
                       onChange={field.onChange}
-                      value={field.value ?? ""}
+                      value={field.value ?? ''}
                     />
                   </FormControl>
                 )}
-                {filter.type === "select" && (
+                {filter.type === 'select' && (
                   <FormControl>
                     <Select
-                      onValueChange={(value) => {
-                        if (value === "all") {
+                      onValueChange={value => {
+                        if (value === 'all') {
                           return field.onChange(null);
                         }
                         field.onChange(Number(value));
                       }}
-                      defaultValue={field.value ? String(field.value) : "all"}
+                      defaultValue={field.value ? String(field.value) : 'all'}
                     >
                       <FormControl>
                         <SelectTrigger>
@@ -76,9 +76,9 @@ const FilterForm = ({ onSubmit, defaultValues }: IFilterFormProps) => {
                       </FormControl>
                       <SelectContent>
                         <SelectItem value="all">All</SelectItem>
-                        {filter.options.map((option) => (
+                        {filter.options.map(option => (
                           <SelectItem key={option} value={String(option)}>
-                            {option === 1 ? "1 room" : `${option} rooms`}
+                            {option === 1 ? '1 room' : `${option} rooms`}
                           </SelectItem>
                         ))}
                       </SelectContent>

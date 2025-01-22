@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   flatFields,
   flatSchema,
   FlatSchema,
   getDefaultFlatValues,
-} from "./utils";
+} from './utils';
 import {
   Form,
   FormControl,
@@ -13,20 +13,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "../ui/input";
+} from '@/components/ui/form';
+import { Input } from '../ui/input';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
-import { Textarea } from "../ui/textarea";
-import DropzoneInput, { DropzoneUploadedImage } from "../common/dropzone-input";
-import { Button } from "../ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
-import LoadingButton from "../common/loading-button";
+} from '../ui/select';
+import { Textarea } from '../ui/textarea';
+import DropzoneInput, { DropzoneUploadedImage } from '../common/dropzone-input';
+import { Button } from '../ui/button';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import LoadingButton from '../common/loading-button';
 
 interface IFlatFormProps {
   defaultValues?: Partial<FlatSchema>;
@@ -42,9 +42,9 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <ScrollArea className="h-96 -m-3">
+        <ScrollArea className="-m-3 h-96">
           <div className="p-3">
-            {flatFields.map((flatField) => (
+            {flatFields.map(flatField => (
               <FormField
                 key={flatField.name}
                 name={flatField.name}
@@ -53,9 +53,9 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
                   <FormItem>
                     <FormLabel>
                       {flatField.label}
-                      {flatField.required ? "*" : ""}
+                      {flatField.required ? '*' : ''}
                     </FormLabel>
-                    {flatField.type === "input" && (
+                    {flatField.type === 'input' && (
                       <FormControl>
                         <Input
                           onChange={field.onChange}
@@ -63,12 +63,10 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
                         />
                       </FormControl>
                     )}
-                    {flatField.type === "select" && (
+                    {flatField.type === 'select' && (
                       <FormControl>
                         <Select
-                          onValueChange={(value) =>
-                            field.onChange(Number(value))
-                          }
+                          onValueChange={value => field.onChange(Number(value))}
                           defaultValue={String(field.value)}
                         >
                           <FormControl>
@@ -77,22 +75,22 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            {flatField.options.map((option) => (
+                            {flatField.options.map(option => (
                               <SelectItem key={option} value={String(option)}>
-                                {option === 1 ? "1 room" : `${option} rooms`}
+                                {option === 1 ? '1 room' : `${option} rooms`}
                               </SelectItem>
                             ))}
                           </SelectContent>
                         </Select>
                       </FormControl>
                     )}
-                    {flatField.type === "textarea" && (
+                    {flatField.type === 'textarea' && (
                       <Textarea
                         value={String(field.value)}
                         onChange={field.onChange}
                       />
                     )}
-                    {flatField.type === "photo" && (
+                    {flatField.type === 'photo' && (
                       <>
                         {field.value ? (
                           <DropzoneUploadedImage
@@ -101,7 +99,7 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
                             alt="Flat image"
                             wrapperClassName="h-64"
                             src={
-                              typeof field.value === "string" ||
+                              typeof field.value === 'string' ||
                               field.value instanceof String
                                 ? (field.value as string)
                                 : URL.createObjectURL(field.value as File)
@@ -113,7 +111,7 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
                             className="h-64"
                             onChange={field.onChange}
                             accept={{
-                              "image/*": [...flatField.acceptedFormats],
+                              'image/*': [...flatField.acceptedFormats],
                             }}
                           />
                         )}
@@ -126,12 +124,12 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
             ))}
           </div>
         </ScrollArea>
-        <div className="flex gap-3 pt-7 justify-end bg-background">
+        <div className="flex justify-end gap-3 bg-background pt-7">
           <Button variant="outline" onClick={onCancel}>
             Cancel
           </Button>
           <LoadingButton isLoading={form.formState.isSubmitting}>
-            {defaultValues ? "Edit apartment" : "Create apartment"}
+            {defaultValues ? 'Edit apartment' : 'Create apartment'}
           </LoadingButton>
         </div>
       </form>

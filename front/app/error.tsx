@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from "next/link";
+import { Button } from '@/components/ui/button';
+import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 
 interface IErrorProps {
   error: Error & { digest?: string };
@@ -11,7 +11,7 @@ interface IErrorProps {
 
 const Error = ({ reset }: IErrorProps) => {
   return (
-    <Card className="w-fit mx-auto">
+    <Card className="mx-auto w-fit">
       <CardHeader>
         <CardTitle>Something went wrong</CardTitle>
         <div className="flex gap-4">

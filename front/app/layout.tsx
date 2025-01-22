@@ -1,25 +1,25 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import TopLoader from "@/components/common/top-loader";
-import Header from "@/components/header/header";
-import { cn } from "@/lib/utils";
-import { Toaster } from "@/components/ui/toaster";
-import ReduxProvider from "@/components/common/redux-provider";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import TopLoader from '@/components/common/top-loader';
+import Header from '@/components/header/header';
+import { cn } from '@/lib/utils';
+import { Toaster } from '@/components/ui/toaster';
+import ReduxProvider from '@/components/common/redux-provider';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Flat Rentals",
-  description: "Flat Rentals",
+  title: 'Flat Rentals',
+  description: 'Flat Rentals',
 };
 
 export default function RootLayout({
@@ -31,15 +31,15 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "antialiased min-h-screen flex flex-col",
+          'flex min-h-screen flex-col antialiased',
           geistSans.variable,
-          geistMono.variable
+          geistMono.variable,
         )}
       >
         <ReduxProvider>
           <TopLoader />
           <Header />
-          <main className="container py-4 flex-grow flex flex-col">
+          <main className="container flex flex-grow flex-col py-4">
             {children}
           </main>
           <Toaster />

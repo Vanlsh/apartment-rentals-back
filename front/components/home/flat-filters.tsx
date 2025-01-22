@@ -1,19 +1,19 @@
-"use client";
+'use client';
 
-import { Filter } from "lucide-react";
-import { Button } from "../ui/button";
+import { Filter } from 'lucide-react';
+import { Button } from '../ui/button';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
-import FilterForm from "../forms/filter-form";
-import { FilterSchema } from "../forms/utils";
-import { useQueryParameters } from "@/hooks/use-query-parameters";
-import { Badge } from "../ui/badge";
-import SearchBadge from "./search-badge";
-import { useTransition } from "react";
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import FilterForm from '../forms/filter-form';
+import { FilterSchema } from '../forms/utils';
+import { useQueryParameters } from '@/hooks/use-query-parameters';
+import { Badge } from '../ui/badge';
+import SearchBadge from './search-badge';
+import { useTransition } from 'react';
 
 interface IFlatFiltersProps {
   className?: string;
@@ -28,7 +28,7 @@ const FlatFilters = ({ className, filters }: IFlatFiltersProps) => {
   };
 
   return (
-    <div className={cn("flex gap-4 items-center", className)}>
+    <div className={cn('flex items-center gap-4', className)}>
       <div className="flex flex-wrap gap-3">
         {filters.roomsCount && (
           <SearchBadge
@@ -43,7 +43,7 @@ const FlatFilters = ({ className, filters }: IFlatFiltersProps) => {
           <SearchBadge
             onClick={() => handleFilters({ ...filters, priceMin: null })}
           >
-            Min price: {filters.priceMin}{" "}
+            Min price: {filters.priceMin}{' '}
           </SearchBadge>
         )}
         {filters.priceMax && (
