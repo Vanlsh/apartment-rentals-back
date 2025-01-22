@@ -4,6 +4,8 @@ import Image from "next/image";
 import noImage from "@/public/no-image-v2.jpg";
 import { cn } from "@/lib/utils";
 import LikeButton from "./like-button";
+import DeleteFlatButton from "./delete-flat-button";
+import EditFlatButton from "./edit-flat-button";
 
 interface IFlatCardProps {
   className?: string;
@@ -24,8 +26,13 @@ const FlatCard = ({ className, flat }: IFlatCardProps) => {
 
       <CardHeader>
         <CardTitle>{flat.title}</CardTitle>
+        <p className="text-muted-foreground">{flat.description}</p>
         <p>Count of rooms: {flat.roomsCount}</p>
         <p>Price: {flat.price}</p>
+        <div className="flex gap-3">
+          <DeleteFlatButton className="flex-1" flat={flat} />{" "}
+          <EditFlatButton className="flex-1" flat={flat} />
+        </div>
       </CardHeader>
     </Card>
   );
