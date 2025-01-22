@@ -21,7 +21,6 @@ export type FetchConfig = {
 export const buildUrl = (paths: string, queryParameters?: Query): string => {
   const normalizedBaseURL = baseURL?.replace(/\/+$/, "");
   const normalizedPath = paths.replace(/^\/+/, "");
-  console.log("baseURL", baseURL);
   const url = new URL(`${normalizedBaseURL}/${normalizedPath}`);
 
   if (queryParameters) {

@@ -20,17 +20,23 @@ const priceSchema = z
 
 export interface FlatParsedFilters {
   page: number;
+  perPage: number;
   roomsCount?: number;
   priceMin?: number;
   priceMax?: number;
 }
 
 export const parseFilters = (filters: FlatFilters) => {
-  const parsedFilters: FlatParsedFilters = { page: 1 };
+  const parsedFilters: FlatParsedFilters = { page: 1, perPage: 10 };
 
   const pageResult = pageSchema.safeParse(filters.page);
   if (pageResult.success) {
     parsedFilters.page = pageResult.data;
+  }
+
+  const perPageResult = pageSchema.safeParse(filters.limit);
+  if (perPageResult.success) {
+    parsedFilters.perPage = perPageResult.data;
   }
 
   const roomsCountResult = roomsCountSchema.safeParse(filters.roomsCount);

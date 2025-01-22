@@ -11,6 +11,7 @@ export interface Flat {
 
 export interface FlatFilters {
   page?: string;
+  limit?: string;
   roomsCount?: string;
   priceMin?: string;
   priceMax?: string;
