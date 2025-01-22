@@ -1,3 +1,4 @@
+import createHttpError from "http-errors";
 import {
   getFlats,
   getFlat,
@@ -13,7 +14,6 @@ export const getFlatsController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const filters = parseFlatFilters(req.query);
 
-
   const flats = await getFlats(page, perPage, filters);
 
   res.status(200).json({
@@ -23,7 +23,7 @@ export const getFlatsController = async (req, res) => {
   });
 };
 
-export const getFlatController = async (req, res) => {
+export const getFlatController = async (req, res, next) => {
   const { flatId } = req.params;
 
   const data = await getFlat(flatId);
@@ -40,7 +40,7 @@ export const getFlatController = async (req, res) => {
   });
 };
 
-export const createFlatController = async (req, res) => {
+export const createFlatController = async (req, res, next) => {
   const photo = req.file;
   const data = { ...req.body };
 

@@ -10,6 +10,8 @@ import { deleteFlatAction } from "@/actions/flat";
 import { toast } from "@/hooks/use-toast";
 import { Trash2 } from "lucide-react";
 import { useParams, useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { removeFavorite } from "@/store/favorite/slice";
 
 interface IDeleteFlatButtonProps {
   className?: string;
@@ -21,6 +23,7 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
   const [isPending, startTransition] = useTransition();
   const { flatId } = useParams();
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleConfirm = async () => {
     startTransition(async () => {
@@ -35,6 +38,7 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
           return;
         }
         if (flatId) router.replace("/");
+        dispatch(removeFavorite(flat._id));
         closeModal();
       } catch (error) {
         toast({

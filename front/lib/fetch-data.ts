@@ -48,6 +48,7 @@ export const sendRequest = async <T>(
 
   if (!response.ok) {
     const data = await response.json();
+
     throw new RequestError("An error occurred", response.status, data);
   }
 

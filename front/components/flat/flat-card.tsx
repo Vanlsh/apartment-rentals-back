@@ -17,7 +17,7 @@ interface IFlatCardProps {
 const FlatCard = ({ className, flat }: IFlatCardProps) => {
   return (
     <Card className={cn("overflow-hidden relative flex flex-col", className)}>
-      <LikeButton flatId={flat._id} />
+      <LikeButton flat={flat} />
       <Image
         className="w-full h-56 object-cover"
         src={flat.photo || noImage.src}

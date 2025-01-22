@@ -1,10 +1,19 @@
-import AddFlatButton from "@/components/flat/add-flat-button";
+"use client";
+
+import FlatList from "@/components/flat/flat-list";
+import { selectFavorites } from "@/store/favorite/selectors";
+import { useSelector } from "react-redux";
 
 const FavoritePage = () => {
-  return (
-    <div>
-      <AddFlatButton />
-    </div>
+  const favorites = useSelector(selectFavorites);
+
+  const isEmpty = favorites.length === 0;
+  return isEmpty ? (
+    <h2 className="text-muted-foreground text-center">
+      No apartment added to favorite list
+    </h2>
+  ) : (
+    <FlatList flats={favorites} />
   );
 };
 

@@ -6,8 +6,6 @@ import LikeButton from "./like-button";
 import DeleteFlatButton from "./delete-flat-button";
 import EditFlatButton from "./edit-flat-button";
 import Image from "next/image";
-import { Button } from "../ui/button";
-import Link from "next/link";
 
 interface IFlatDetailsProps {
   className?: string;
@@ -17,7 +15,7 @@ interface IFlatDetailsProps {
 const FlatDetails = ({ className, flat }: IFlatDetailsProps) => {
   return (
     <Card className={cn("relative", className)}>
-      <LikeButton flatId={flat._id} />
+      <LikeButton flat={flat} />
       <CardHeader className="flex-row gap-4">
         <Image
           className="w-full max-w-sm object-cover"

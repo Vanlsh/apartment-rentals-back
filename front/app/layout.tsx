@@ -5,6 +5,7 @@ import TopLoader from "@/components/common/top-loader";
 import Header from "@/components/header/header";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import ReduxProvider from "@/components/common/redux-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,12 +36,14 @@ export default function RootLayout({
           geistMono.variable
         )}
       >
-        <TopLoader />
-        <Header />
-        <main className="container py-4 flex-grow flex flex-col">
-          {children}
-        </main>
-        <Toaster />
+        <ReduxProvider>
+          <TopLoader />
+          <Header />
+          <main className="container py-4 flex-grow flex flex-col">
+            {children}
+          </main>
+          <Toaster />
+        </ReduxProvider>
       </body>
     </html>
   );
