@@ -19,7 +19,7 @@ const Home = async (props: HomeProps) => {
     <>
       <HomeHeader className="mb-3" />
       <FlatList className="mb-5" flats={data.data} />
-      {data.totalPages > 1 && (
+      {/* {data.totalPages > 1 && (
         <div className="mt-auto">
           <CustomPagination
             currentPage={data.page}
@@ -27,7 +27,7 @@ const Home = async (props: HomeProps) => {
             pageSize={data.perPage}
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };

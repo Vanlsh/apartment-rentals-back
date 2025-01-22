@@ -12,3 +12,7 @@ export interface Pagination {
   totalItems: number;
   totalPages: number;
 }
+
+export enum Tags {
+  Flats = "flats",
+}

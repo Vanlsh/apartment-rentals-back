@@ -15,7 +15,7 @@ type PictureProps = {
   className?: string;
   width?: number;
   height?: number;
-  loading?: "lazy" | "eager"; // 'lazy' для ленивой загрузки, 'eager' для стандартной
+  loading?: "lazy" | "eager";
 };
 
 const getMimeType = (url: string): string | undefined => {

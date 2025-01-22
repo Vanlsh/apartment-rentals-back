@@ -26,7 +26,6 @@ import { Textarea } from "../ui/textarea";
 import DropzoneInput, { DropzoneUploadedImage } from "../common/dropzone-input";
 import { Button } from "../ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Divide } from "lucide-react";
 
 interface IFlatFormProps {
   defaultValues?: Partial<FlatSchema>;
@@ -40,7 +39,7 @@ const FlatForm = ({ defaultValues, onSubmit }: IFlatFormProps) => {
   });
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(console.log)}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <ScrollArea className="h-96 -m-3">
           <div className="p-3">
             {flatFields.map((flatField) => (

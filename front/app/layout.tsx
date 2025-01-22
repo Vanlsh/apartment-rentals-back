@@ -4,6 +4,7 @@ import "./globals.css";
 import TopLoader from "@/components/common/top-loader";
 import Header from "@/components/header/header";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <main className="container py-4 flex-grow flex flex-col">
           {children}
         </main>
+        <Toaster />
       </body>
     </html>
   );

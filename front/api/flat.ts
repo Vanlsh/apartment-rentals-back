@@ -1,5 +1,6 @@
+import { api } from "@/lib/api";
 import { sendRequest } from "@/lib/fetch-data";
-import { ApiResponse, Pagination } from "@/types";
+import { ApiResponse, Pagination, Tags } from "@/types";
 import { Flat } from "@/types/flat";
 
 interface FlatsData extends Pagination {
@@ -12,7 +13,29 @@ export const getFlats = async (filters: {
   priceMin?: number;
   priceMax?: number;
 }) => {
+  console.log("getFlats");
   return await sendRequest<ApiResponse<FlatsData>>("/api/flat", {
     query: filters,
+    init: { next: { tags: ["flats"] } },
   });
+};
+
+export const addFlat = <T>(values: T) => {
+  return api.post("/api/flat", values, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const updateFlat = <T>(values: T) => {
+  return api.patch("/api/flat", values, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+};
+
+export const deleteFlat = (id: string) => {
+  return api.delete(`/api/flat/${id}`);
 };
