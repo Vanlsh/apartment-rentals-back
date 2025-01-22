@@ -9,6 +9,7 @@ import LoadingButton from "../common/loading-button";
 import { deleteFlatAction } from "@/actions/flat";
 import { toast } from "@/hooks/use-toast";
 import { Trash2 } from "lucide-react";
+import { useParams, useRouter } from "next/navigation";
 
 interface IDeleteFlatButtonProps {
   className?: string;
@@ -18,6 +19,8 @@ interface IDeleteFlatButtonProps {
 const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
   const { isOpen, setIsOpen, openModal, closeModal } = useModal();
   const [isPending, startTransition] = useTransition();
+  const { flatId } = useParams();
+  const router = useRouter();
 
   const handleConfirm = async () => {
     startTransition(async () => {
@@ -31,6 +34,7 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
           });
           return;
         }
+        if (flatId) router.replace("/");
         closeModal();
       } catch (error) {
         toast({

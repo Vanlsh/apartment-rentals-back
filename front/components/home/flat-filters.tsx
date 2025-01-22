@@ -7,7 +7,6 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
 import FilterForm from "../forms/filter-form";
 import { FilterSchema } from "../forms/utils";
