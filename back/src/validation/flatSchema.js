@@ -12,7 +12,7 @@ export const flatSchema = Joi.object({
       "string.empty": "Title is required.",
       "string.max": "Title cannot exceed 90 characters.",
     }),
-  description: Joi.string().max(335).optional().messages({
+  description: Joi.string().min(0).max(335).optional().messages({
     "string.max": "Description cannot exceed 335 characters.",
   }),
   price: Joi.number()
