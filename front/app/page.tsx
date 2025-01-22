@@ -15,9 +15,13 @@ const Home = async (props: HomeProps) => {
 
   const { data } = await getFlats(filters);
 
+  const { roomsCount, priceMin, priceMax } = filters;
   return (
     <>
-      <HomeHeader className="mb-3" />
+      <HomeHeader
+        className="mb-3"
+        filters={{ roomsCount, priceMin, priceMax }}
+      />
       <FlatList className="mb-5" flats={data.data} />
       {data.totalPages > 1 && (
         <div className="mt-auto">

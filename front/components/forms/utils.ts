@@ -73,3 +73,57 @@ export const flatFields = [
     acceptedFormats: [".jpg", ".jpeg", ".png", ".webp"],
   },
 ] as const;
+
+// FILTER
+export type FilterSchema = z.infer<typeof filterSchema>;
+
+export const getFilterValues = (overrides: Partial<FilterSchema> = {}) => ({
+  priceMin: null,
+  priceMax: null,
+  roomsCount: null,
+  ...overrides,
+});
+
+export const filterSchema = z
+  .object({
+    priceMin: z.coerce
+      .number({ invalid_type_error: "Should be a number" })
+      .transform((val) => val || null)
+      .nullable(),
+    priceMax: z.coerce
+      .number({ invalid_type_error: "Should be a number" })
+      .transform((val) => val || null)
+      .nullable(),
+    roomsCount: z.number().nullable(),
+  })
+  .refine(
+    (data) => {
+      if (data.priceMin && data.priceMax) {
+        return Number(data.priceMin) <= Number(data.priceMax);
+      }
+      return true;
+    },
+    {
+      message: "Minimum price must be less or equal to maximum price",
+      path: ["priceMin"],
+    }
+  );
+
+export const filterFiled = [
+  {
+    type: "input",
+    name: "priceMin",
+    label: "Min price",
+  },
+  {
+    type: "input",
+    name: "priceMax",
+    label: "Max price",
+  },
+  {
+    type: "select",
+    name: "roomsCount",
+    label: "Count of rooms",
+    options: roomOptions,
+  },
+] as const;
