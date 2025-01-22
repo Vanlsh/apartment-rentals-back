@@ -27,7 +27,7 @@ export interface FlatParsedFilters {
 }
 
 export const parseFilters = (filters: FlatFilters) => {
-  const parsedFilters: FlatParsedFilters = { page: 1, perPage: 10 };
+  const parsedFilters: FlatParsedFilters = { page: 1, perPage: 12 };
 
   const pageResult = pageSchema.safeParse(filters.page);
   if (pageResult.success) {

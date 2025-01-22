@@ -1,11 +1,11 @@
 import { Flat } from "@/types/flat";
 import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
 import noImage from "@/public/no-image-v2.jpg";
 import { cn } from "@/lib/utils";
 import LikeButton from "./like-button";
 import DeleteFlatButton from "./delete-flat-button";
 import EditFlatButton from "./edit-flat-button";
+import Image from "next/image";
 
 interface IFlatCardProps {
   className?: string;
@@ -14,7 +14,7 @@ interface IFlatCardProps {
 
 const FlatCard = ({ className, flat }: IFlatCardProps) => {
   return (
-    <Card className={cn("overflow-hidden relative", className)}>
+    <Card className={cn("overflow-hidden relative flex flex-col", className)}>
       <LikeButton flatId={flat._id} />
       <Image
         className="w-full h-56 object-cover"
@@ -24,11 +24,15 @@ const FlatCard = ({ className, flat }: IFlatCardProps) => {
         alt={flat.title}
       />
 
-      <CardHeader>
-        <CardTitle>{flat.title}</CardTitle>
-        <p className="text-muted-foreground">{flat.description}</p>
-        <p>Count of rooms: {flat.roomsCount}</p>
-        <p>Price: {flat.price}</p>
+      <CardHeader className="flex-grow flex flex-col justify-between">
+        <div className="space-y-2">
+          <CardTitle>{flat.title}</CardTitle>
+          <p className="text-muted-foreground line-clamp-3">
+            {flat.description}
+          </p>
+          <p>Count of rooms: {flat.roomsCount}</p>
+          <p>Price: {flat.price}</p>
+        </div>
         <div className="flex gap-3">
           <DeleteFlatButton className="flex-1" flat={flat} />{" "}
           <EditFlatButton className="flex-1" flat={flat} />

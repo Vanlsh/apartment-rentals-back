@@ -46,7 +46,7 @@ const AddFlatModal = ({
       title="Add apartment"
       description="Form for adding apartment"
     >
-      <FlatForm onSubmit={onSubmit} />
+      <FlatForm onSubmit={onSubmit} onCancel={closeModal} />
     </Modal>
   );
 };

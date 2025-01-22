@@ -26,13 +26,15 @@ import { Textarea } from "../ui/textarea";
 import DropzoneInput, { DropzoneUploadedImage } from "../common/dropzone-input";
 import { Button } from "../ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import LoadingButton from "../common/loading-button";
 
 interface IFlatFormProps {
   defaultValues?: Partial<FlatSchema>;
   onSubmit: (values: FlatSchema) => void;
+  onCancel: () => void;
 }
 
-const FlatForm = ({ defaultValues, onSubmit }: IFlatFormProps) => {
+const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
   const form = useForm<FlatSchema>({
     resolver: zodResolver(flatSchema),
     defaultValues: getDefaultFlatValues(defaultValues),
@@ -124,9 +126,14 @@ const FlatForm = ({ defaultValues, onSubmit }: IFlatFormProps) => {
             ))}
           </div>
         </ScrollArea>
-        <Button className="flex ml-auto mt-4">
-          {defaultValues ? "Edit apartment" : "Create apartment"}
-        </Button>
+        <div className="flex gap-3 pt-7 justify-end bg-background">
+          <Button variant="outline" onClick={onCancel}>
+            Cancel
+          </Button>
+          <LoadingButton isLoading={form.formState.isSubmitting}>
+            {defaultValues ? "Edit apartment" : "Create apartment"}
+          </LoadingButton>
+        </div>
       </form>
     </Form>
   );

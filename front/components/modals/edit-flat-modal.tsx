@@ -49,7 +49,11 @@ const EditFlatModal = ({
       title="Edit apartment"
       description="Form for adding apartment"
     >
-      <FlatForm onSubmit={onSubmit} defaultValues={flat} />
+      <FlatForm
+        onSubmit={onSubmit}
+        defaultValues={flat}
+        onCancel={closeModal}
+      />
     </Modal>
   );
 };
