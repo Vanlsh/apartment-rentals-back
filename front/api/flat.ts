@@ -28,8 +28,8 @@ export const addFlat = <T>(values: T) => {
   });
 };
 
-export const updateFlat = <T>(values: T) => {
-  return api.patch("/api/flat", values, {
+export const updateFlat = <T>(id: string, values: T) => {
+  return api.patch(`/api/flat/${id}`, values, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

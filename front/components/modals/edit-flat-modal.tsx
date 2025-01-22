@@ -4,26 +4,29 @@ import { Dispatch, SetStateAction } from "react";
 import Modal from "@/components/common/modal";
 import FlatForm from "../forms/flat-form";
 import { FlatSchema } from "../forms/utils";
-import { addFlatAction } from "@/actions/flat";
+import { updateFlatAction } from "@/actions/flat";
 import { toFormData } from "@/lib/to-form-data";
 import { toast } from "@/hooks/use-toast";
+import { Flat } from "@/types/flat";
 
-interface IAddFlatModalProps {
+interface IEditFlatModalProps {
   isOpen: boolean;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   closeModal: () => void;
+  flat: Flat;
 }
 
-const AddFlatModal = ({
+const EditFlatModal = ({
   isOpen,
   setIsOpen,
   closeModal,
-}: IAddFlatModalProps) => {
+  flat,
+}: IEditFlatModalProps) => {
   const onSubmit = async (values: FlatSchema) => {
     if (!values.photo || "string" === typeof values.photo) delete values.photo;
 
     try {
-      const response = await addFlatAction(toFormData(values));
+      const response = await updateFlatAction(flat._id, toFormData(values));
 
       if (response.error) {
         return toast({
@@ -43,12 +46,12 @@ const AddFlatModal = ({
     <Modal
       isOpen={isOpen}
       setIsOpen={setIsOpen}
-      title="Add apartment"
+      title="Edit apartment"
       description="Form for adding apartment"
     >
-      <FlatForm onSubmit={onSubmit} />
+      <FlatForm onSubmit={onSubmit} defaultValues={flat} />
     </Modal>
   );
 };
 
-export default AddFlatModal;
+export default EditFlatModal;

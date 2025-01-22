@@ -2,25 +2,21 @@
 
 import { addFlat, updateFlat, deleteFlat } from "@/api/flat";
 import { Tags } from "@/types";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export const addFlatAction = async <T>(values: T) => {
   try {
-    console.log("addFlatAction");
-
-    const data = await addFlat(values);
-    // revalidateTag(Tags.Flats);
-    revalidatePath("/", "page");
+    const { data } = await addFlat(values);
+    revalidateTag(Tags.Flats);
     return { success: "Flat has been added successfully", data };
   } catch (error) {
-    console.log(error.response.data.data.errors);
     return { error: "An error occurred while adding the flat" };
   }
 };
 
-export const updateFlatAction = async <T>(values: T) => {
+export const updateFlatAction = async <T>(id: string, values: T) => {
   try {
-    const data = await updateFlat(values);
+    const { data } = await updateFlat(id, values);
 
     return { success: "Flat has been updated successfully", data };
   } catch (error) {
