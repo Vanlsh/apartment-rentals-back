@@ -24,10 +24,10 @@ export const getFlats = async (
   }
 
   const flats = await FlatCollection.find(query)
+    .sort({ createdAt: -1 })
     .skip((page - 1) * perPage)
     .limit(perPage)
     .exec();
-
   const totalFlats = await FlatCollection.countDocuments(query);
 
   const paginationData = calculatePaginationData(totalFlats, perPage, page);
