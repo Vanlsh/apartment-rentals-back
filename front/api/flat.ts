@@ -13,10 +13,15 @@ export const getFlats = async (filters: {
   priceMin?: number;
   priceMax?: number;
 }) => {
-  console.log("getFlats");
   return await sendRequest<ApiResponse<FlatsData>>("/api/flat", {
     query: filters,
     init: { next: { tags: ["flats"] } },
+  });
+};
+
+export const getFlat = async (flatId: string) => {
+  return await sendRequest<ApiResponse<Flat>>(`/api/flat/${flatId}`, {
+    init: { next: { tags: [Tags.Flats] } },
   });
 };
 

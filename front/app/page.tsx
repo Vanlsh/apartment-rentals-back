@@ -1,6 +1,6 @@
 import { getFlats } from "@/api/flat";
 import CustomPagination from "@/components/common/custom-pagination";
-import FlatList from "@/components/home/flat-list";
+import FlatList from "@/components/flat/flat-list";
 import HomeHeader from "@/components/home/home-header";
 import { parseFilters } from "@/lib/parseFilter";
 import { FlatFilters } from "@/types/flat";

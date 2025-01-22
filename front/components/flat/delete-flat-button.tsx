@@ -2,13 +2,13 @@
 
 import { useModal } from "@/hooks/use-modal";
 import Modal from "../common/modal";
+import { useTransition } from "react";
 import { Button } from "../ui/button";
 import { Flat } from "@/types/flat";
-import { useTransition } from "react";
 import LoadingButton from "../common/loading-button";
 import { deleteFlatAction } from "@/actions/flat";
 import { toast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
+import { Trash2 } from "lucide-react";
 
 interface IDeleteFlatButtonProps {
   className?: string;
@@ -42,8 +42,8 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
   };
   return (
     <>
-      <Button variant="destructive" className={className} onClick={openModal}>
-        Delete
+      <Button variant="ghost" className={className} onClick={openModal}>
+        <Trash2 />
       </Button>
       <Modal
         isOpen={isOpen}

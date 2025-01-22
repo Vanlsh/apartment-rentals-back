@@ -1,4 +1,4 @@
-import AddFlatButton from "@/components/home/add-flat-button";
+import AddFlatButton from "@/components/flat/add-flat-button";
 
 const FavoritePage = () => {
   return (

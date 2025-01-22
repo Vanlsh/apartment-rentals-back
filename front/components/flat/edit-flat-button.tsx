@@ -4,6 +4,7 @@ import { useModal } from "@/hooks/use-modal";
 import { Button } from "../ui/button";
 import { Flat } from "@/types/flat";
 import EditFlatModal from "../modals/edit-flat-modal";
+import { Edit } from "lucide-react";
 
 interface IEditFlatButtonProps {
   className?: string;
@@ -15,8 +16,8 @@ const EditFlatButton = ({ className, flat }: IEditFlatButtonProps) => {
 
   return (
     <>
-      <Button className={className} onClick={openModal}>
-        Edit apartment
+      <Button variant="ghost" className={className} onClick={openModal}>
+        <Edit />
       </Button>
       <EditFlatModal
         isOpen={isOpen}

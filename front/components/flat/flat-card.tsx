@@ -6,6 +6,8 @@ import LikeButton from "./like-button";
 import DeleteFlatButton from "./delete-flat-button";
 import EditFlatButton from "./edit-flat-button";
 import Image from "next/image";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 interface IFlatCardProps {
   className?: string;
@@ -34,8 +36,11 @@ const FlatCard = ({ className, flat }: IFlatCardProps) => {
           <p>Price: {flat.price}</p>
         </div>
         <div className="flex gap-3">
-          <DeleteFlatButton className="flex-1" flat={flat} />{" "}
-          <EditFlatButton className="flex-1" flat={flat} />
+          <Button asChild className="flex-1">
+            <Link href={`/${flat._id}`}>Open details</Link>
+          </Button>
+          <DeleteFlatButton flat={flat} />
+          <EditFlatButton flat={flat} />
         </div>
       </CardHeader>
     </Card>
