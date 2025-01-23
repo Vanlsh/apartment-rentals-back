@@ -47,12 +47,6 @@ export const flatFields = [
     required: true,
   },
   {
-    type: 'textarea',
-    name: 'description',
-    label: 'Description',
-    required: false,
-  },
-  {
     type: 'input',
     name: 'price',
     label: 'Price',
@@ -64,6 +58,12 @@ export const flatFields = [
     label: 'Count of rooms',
     required: true,
     options: roomOptions,
+  },
+  {
+    type: 'textarea',
+    name: 'description',
+    label: 'Description',
+    required: false,
   },
   {
     type: 'photo',
