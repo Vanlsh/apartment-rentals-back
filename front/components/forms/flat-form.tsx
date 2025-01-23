@@ -128,7 +128,10 @@ const FlatForm = ({ defaultValues, onSubmit, onCancel }: IFlatFormProps) => {
           <Button variant="outline" onClick={onCancel}>
             Cancel
           </Button>
-          <LoadingButton isLoading={form.formState.isSubmitting}>
+          <LoadingButton
+            disabled={form.formState.isSubmitting}
+            isLoading={form.formState.isSubmitting}
+          >
             {defaultValues ? 'Edit apartment' : 'Create apartment'}
           </LoadingButton>
         </div>

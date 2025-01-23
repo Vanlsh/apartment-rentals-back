@@ -66,6 +66,7 @@ const DeleteFlatButton = ({ className, flat }: IDeleteFlatButtonProps) => {
           </Button>
           <LoadingButton
             variant="destructive"
+            disabled={isPending}
             isLoading={isPending}
             onClick={handleConfirm}
           >

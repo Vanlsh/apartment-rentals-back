@@ -10,9 +10,16 @@ services:
       - "5000:5000"
     environment:
       - NODE_ENV=development
+      - PORT=5000
+      - MONGODB_USER=iparan80000
+      - MONGODB_PASSWORD=iATt3HogK9NcMush
+      - MONGODB_URL=cluster0.jyabg.mongodb.net
+      - MONGODB_DB=flat-rang
+      - CLOUD_NAME=dkumpgkfb
+      - API_KEY=431737798226375
+      - API_SECRET=-VrTUI_Hxci9eXmm9Vxnmat2qTg
     volumes:
-      - ./backend:/app
-      - /app/node_modules
+      - ./back:/app
     networks:
       - app-network
 
@@ -25,9 +32,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=development
+      - API_URL=http://backend:5000 # Use Docker's service name
     volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      - ./front:/app
     depends_on:
       - backend
     networks:

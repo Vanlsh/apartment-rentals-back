@@ -19,18 +19,25 @@ export const getDefaultFlatValues = (overrides: Partial<FlatSchema> = {}) => ({
 });
 
 export const flatSchema = z.object({
-  title: z.string().min(3).max(90),
-  description: z.string().max(335),
-  price: z.coerce.number({ invalid_type_error: 'Should be a number' }).min(1),
+  title: z
+    .string()
+    .min(3, { message: 'Title must be at least 3 characters long.' })
+    .max(90, { message: 'Title must not exceed 90 characters.' }),
+  description: z
+    .string()
+    .max(335, { message: 'Description must not exceed 335 characters.' }),
+  price: z.coerce
+    .number({ invalid_type_error: 'Price should be a number.' })
+    .min(1, { message: 'Price must be at least 1.' }),
   roomsCount: z.number(),
   photo: z
     .union([
       z.string(),
       z
-        .instanceof(File, { message: 'Будь ласка, виберіть файл зображення.' })
+        .instanceof(File, { message: 'Please select an image file.' })
         .refine(file => ACCEPTED_IMAGE_TYPES.has(file.type), {
           message:
-            'Будь ласка, завантажте дійсний файл зображення (JPG, JPEG, PNG або WebP).',
+            'Please upload a valid image file (JPG, JPEG, PNG, or WebP).',
         }),
     ])
     .nullable()
