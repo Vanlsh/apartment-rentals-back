@@ -19,7 +19,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: 'Flat Rentals',
-  description: 'Flat Rentals',
+  description:
+    'Discover the best apartments, homes, and rentals at affordable prices. Start your journey to finding the perfect flat with Flat Rentals.',
 };
 
 export default function RootLayout({
