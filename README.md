@@ -26,6 +26,9 @@ API_URL=http://localhost:5000
 
 ### Backend (back/.env)
 
+Cloudinary: https://cloudinary.com/
+Mongodb: https://www.mongodb.com/
+
 ```env
 PORT=5000
 MONGODB_USER=<your-mongodb-username>
