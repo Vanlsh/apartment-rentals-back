@@ -48,3 +48,77 @@ Replace placeholders (<...>) with your actual credentials.
 ```
 docker-compose up --build
 ```
+
+2. Access the Application
+   Once the containers are running:
+
+Frontend: Open http://localhost:3000
+Backend: The backend is available at http://localhost:5000.
+
+---
+
+## Running Locally Without Docker
+
+If you'd like to run the project locally without Docker, follow these steps:
+
+### Backend
+
+1. Navigate to the back folder:
+
+```
+cd back
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Add environment variables in a .env file inside the back directory as shown above.
+
+4. Start the backend server:
+
+```
+npm start
+```
+
+The backend will be running at http://localhost:5000.
+
+## Frontend
+
+1. Navigate to the back folder:
+
+```
+cd front
+```
+
+2. Install dependencies:
+
+```
+npm install
+```
+
+3. Add environment variables in a .env file inside the front directory as shown above.
+
+4. Start the frontend development server:
+
+```
+npm run dev
+```
+
+5. Alternatively, you can build the project for production:
+
+```
+npm run build
+```
+
+Then, start the production server:
+
+```
+npm start
+```
+
+This approach will load pages faster as it serves the optimized production build.
+
+The frontend will be running at http://localhost:3000.
